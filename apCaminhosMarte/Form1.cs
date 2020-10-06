@@ -79,27 +79,6 @@ namespace apCaminhosMarte
 
         }
 
-        private void dgvCaminhos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
-            Application.DoEvents();
-
-            int linha = dgvCaminhos.CurrentCell.RowIndex;
-            List<Passo> caminho = this.caminhos[linha];
-
-            Graphics g = pbMapa.CreateGraphics();
-
-            Pen pen = new Pen(Color.Blue, 3);
-            int fX = 4096 / pbMapa.Width;
-            int fY = 2048 / pbMapa.Height;
-            foreach (Passo p in caminho)
-            {
-                g.DrawLine(pen, new Point(p.Origem.Coord.X/fX, p.Origem.Coord.Y/fY), new Point(p.Destino.Coord.X/fX, p.Destino.Coord.Y/fY));
-            }
-
-            marte.DesenharCidades(pbMapa);
-        }
-
         private void Form1_Shown(object sender, EventArgs e)
         {
             marte = new Marte("CidadesMarte.txt", "CaminhosEntreCidadesMarte.txt");
@@ -108,23 +87,31 @@ namespace apCaminhosMarte
             marte.DesenharCidades(pbMapa);
         }
 
+        private void dgvCaminhos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
+            Application.DoEvents();
+            desenharCaminho(this.caminhos[dgvCaminhos.CurrentCell.RowIndex]);
+        }
+
         private void dgvMelhorCaminho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
             Application.DoEvents();
+            desenharCaminho(this.melhorCaminho);
+        }
 
-            List<Passo> caminho = this.melhorCaminho;
-
+        private void desenharCaminho(List<Passo> caminho)
+        {
             Graphics g = pbMapa.CreateGraphics();
-
+            Pen pen = new Pen(Color.Blue, 3);
             int fX = 4096 / pbMapa.Width;
             int fY = 2048 / pbMapa.Height;
-            Pen pen = new Pen(Color.Blue, 3);
             foreach (Passo p in caminho)
             {
                 g.DrawLine(pen, new Point(p.Origem.Coord.X / fX, p.Origem.Coord.Y / fY), new Point(p.Destino.Coord.X / fX, p.Destino.Coord.Y / fY));
             }
-
+            Application.DoEvents();
             marte.DesenharCidades(pbMapa);
         }
     }
