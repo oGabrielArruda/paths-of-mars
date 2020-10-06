@@ -12,19 +12,17 @@ namespace apCaminhosMarte
     {
         private int id;
         private string nome;
-        private int x, y;
+        private Coordenada coord;
 
         public int Id { get => id; set => id = value; }
         public string Nome { get => nome; set => nome = value; }
-        public int X { get => x; set => x = value; }
-        public int Y { get => y; set => y = value; }
+        public Coordenada Coord { get => coord; set => coord = value; }
 
-        public Cidade(int id, string nome, int x, int y)
+        public Cidade(int id, string nome, Coordenada coord)
         {
             this.id = id;
             this.nome = nome;
-            this.x = x;
-            this.y = y;
+            this.Coord = coord;
         }
 
         public int CompareTo(Cidade other)

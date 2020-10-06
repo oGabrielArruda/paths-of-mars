@@ -49,6 +49,9 @@
     <Compile Include="ArvoreBinaria.cs" />
     <Compile Include="ArvoreCidades.cs" />
     <Compile Include="Cidade.cs" />
+    <Compile Include="Coordenada.cs" />
+    <Compile Include="Caminho.cs" />
+    <Compile Include="EncontradorDeCaminhos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

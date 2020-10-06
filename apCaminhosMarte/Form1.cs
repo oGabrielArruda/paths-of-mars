@@ -27,12 +27,12 @@ namespace apCaminhosMarte
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Buscar caminhos entre cidades selecionadas");
+            List<List<Caminho>> caminhos = marte.AcharCaminhos(lsbOrigem.SelectedIndex, lsbDestino.SelectedIndex);           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            marte = new Marte("CidadesMarte.txt");
+            marte = new Marte("CidadesMarte.txt", "CaminhosEntreCidadesMarte.txt");
             marte.DesenharCidades(pbMapa);
         }
     }

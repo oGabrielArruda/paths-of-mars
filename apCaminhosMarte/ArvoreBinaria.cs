@@ -41,5 +41,24 @@ namespace apCaminhosMarte
                     incluirRecursivamente(atual.Dir, info);
             }
         }
+
+        public Dado BuscaDado(Dado dadoBuscado)
+        {
+            return acharDado(dadoBuscado, this.raiz);
+        }
+
+        private Dado acharDado(Dado dadoBuscado, NoArvore<Dado> atual)
+        {
+            if (atual == null)
+                throw new Exception("Dado inexistente!");
+
+            int comp = dadoBuscado.CompareTo(atual.Info);
+            if (comp == 0)
+                return atual.Info;
+            if (comp < 0)
+                return acharDado(dadoBuscado, atual.Esq);
+            else
+                return acharDado(dadoBuscado, atual.Dir);
+        }
     }
 }
