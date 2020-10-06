@@ -11,35 +11,39 @@ namespace apCaminhosMarte
     class EncontradorDeCaminhos
     {
         Cidade origem, destino;
-        Caminho[,] matrizDeAdjacencias;
-        List<List<Caminho>> caminhosEncontrados;
-        public EncontradorDeCaminhos(Caminho[,] matrizDeAdjacencias, Cidade origem, Cidade destino)
+        Passo[,] matrizDeAdjacencias;
+        List<List<Passo>> caminhosEncontrados;
+        public EncontradorDeCaminhos(Passo[,] matrizDeAdjacencias, Cidade origem, Cidade destino)
         {
             this.origem = origem;
             this.destino = destino;
             this.matrizDeAdjacencias = matrizDeAdjacencias;
         }   
         
-        public List<List<Caminho>> EncontrarCaminhos()
+        public List<List<Passo>> EncontrarCaminhos()
         {
-            this.caminhosEncontrados = new List<List<Caminho>>();
-            encontrarRecursivo(this.origem, new List<Caminho>(), new bool[this.matrizDeAdjacencias.GetLength(0)]);
+            this.caminhosEncontrados = new List<List<Passo>>();
+            encontrarRecursivo(this.origem, new List<Passo>(), new bool[this.matrizDeAdjacencias.GetLength(0)]);
+
+            if (this.caminhosEncontrados.Count() == 0)
+                throw new Exception("Nenhum caminho encontrado!");
+
             return this.caminhosEncontrados;
         }
 
-        private void encontrarRecursivo(Cidade cidadeAtual, List<Caminho> caminhoFeito, bool[] jaPassou)
+        private void encontrarRecursivo(Cidade cidadeAtual, List<Passo> caminhoFeito, bool[] jaPassou)
         {
             jaPassou[cidadeAtual.Id] = true;
 
             for(int j = 0; j < this.matrizDeAdjacencias.GetLength(0); j++)
             {
-                Caminho caminho = this.matrizDeAdjacencias[cidadeAtual.Id, j];
+                Passo caminho = this.matrizDeAdjacencias[cidadeAtual.Id, j];
                 if (caminho != null && !jaPassou[j])
                 {
                     caminhoFeito.Add(caminho);
 
                     if (j == destino.Id)
-                        caminhosEncontrados.Add(caminhoFeito.Select(item => (Caminho)item.Clone()).ToList());
+                        caminhosEncontrados.Add(caminhoFeito.Select(item => (Passo)item.Clone()).ToList());
                     else
                         encontrarRecursivo(caminho.Destino, caminhoFeito, jaPassou);
                     caminhoFeito.RemoveAt(caminhoFeito.Count - 1);

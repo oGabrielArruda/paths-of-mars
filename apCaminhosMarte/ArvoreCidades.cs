@@ -10,9 +10,9 @@ namespace apCaminhosMarte
 {
     class ArvoreCidades : ArvoreBinaria<Cidade>
     {
-        public void DesenharCidades(PictureBox pb)
+        public void DesenharCidades(Graphics g)
         {
-            desenharCidadesRec(base.raiz, Graphics.FromImage(pb.Image));
+            desenharCidadesRec(base.raiz, g);
         }
 
         private void desenharCidadesRec(NoArvore<Cidade> atual, Graphics g)

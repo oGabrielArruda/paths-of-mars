@@ -20,6 +20,8 @@ namespace apCaminhosMarte
             InitializeComponent();
         }
 
+        List<List<Passo>> caminhos;
+        List<Passo> melhorCaminho;
         private void TxtCaminhos_DoubleClick(object sender, EventArgs e)
         {
            
@@ -27,13 +29,78 @@ namespace apCaminhosMarte
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            List<List<Caminho>> caminhos = marte.AcharCaminhos(lsbOrigem.SelectedIndex, lsbDestino.SelectedIndex);           
+            dgvMelhorCaminho.Rows.Clear();
+            dgvCaminhos.Rows.Clear();
+            try
+            {
+                List<List<Passo>> caminhos = marte.AcharCaminhos(lsbOrigem.SelectedIndex, lsbDestino.SelectedIndex);
+
+                List<Passo> menorCaminho = null;
+                int menorDistancia = int.MaxValue;
+                int maiorDistancia = int.MinValue;
+
+                int i = 0;
+               
+                dgvCaminhos.RowCount = caminhos.Count();
+                foreach (List<Passo> caminho in caminhos)
+                {
+                    if(caminho.Count > maiorDistancia)
+                    {
+                        dgvCaminhos.ColumnCount = caminho.Count();
+                        maiorDistancia = caminho.Count();
+                    }
+
+                    int j = 0;
+                    
+                    foreach (Passo passo in caminho)
+                    {
+                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Nome}";
+                        j++;
+                    }
+
+                    if (j < menorDistancia)
+                    {
+                        menorCaminho = caminho;
+                        menorDistancia = j;
+                    }
+
+                    i++;
+                }
+
+                dgvMelhorCaminho.RowCount = 1;
+                dgvMelhorCaminho.ColumnCount = menorCaminho.Count();
+                i = 0;
+                foreach (Passo passo in menorCaminho)
+                    dgvMelhorCaminho.Rows[0].Cells[i++].Value = $"{passo.Destino.Nome}";
+
+                this.caminhos = caminhos;
+                this.melhorCaminho = menorCaminho;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void dgvCaminhos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int linha = dgvCaminhos.CurrentCell.RowIndex;
+            List<Passo> caminho = this.caminhos[linha];
+
+            Graphics g = pbMapa.CreateGraphics();
+
+            foreach (Passo p in caminho)
+            {
+                g.DrawLine(Pens.Blue, new Point(p.Origem.Coord.X/4, p.Origem.Coord.Y/4), new Point(p.Destino.Coord.X/4, p.Destino.Coord.Y/4));
+
+            }
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
             marte = new Marte("CidadesMarte.txt", "CaminhosEntreCidadesMarte.txt");
-            marte.DesenharCidades(pbMapa);
+            marte.DesenharCidades(pbMapa.CreateGraphics());
         }
     }
 }

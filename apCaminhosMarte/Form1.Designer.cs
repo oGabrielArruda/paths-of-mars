@@ -121,6 +121,7 @@
             this.dgvMelhorCaminho.Location = new System.Drawing.Point(1037, 448);
             this.dgvMelhorCaminho.Name = "dgvMelhorCaminho";
             this.dgvMelhorCaminho.ReadOnly = true;
+            this.dgvMelhorCaminho.RowHeadersVisible = false;
             this.dgvMelhorCaminho.Size = new System.Drawing.Size(277, 71);
             this.dgvMelhorCaminho.TabIndex = 10;
             // 
@@ -182,50 +183,52 @@
             this.dgvCaminhos.Location = new System.Drawing.Point(1037, 238);
             this.dgvCaminhos.Name = "dgvCaminhos";
             this.dgvCaminhos.ReadOnly = true;
+            this.dgvCaminhos.RowHeadersVisible = false;
             this.dgvCaminhos.Size = new System.Drawing.Size(277, 181);
             this.dgvCaminhos.TabIndex = 9;
+            this.dgvCaminhos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCaminhos_CellClick);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Cidade";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 75;
+            this.Column1.Width = 39;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Cidade";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 75;
+            this.Column2.Width = 39;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Cidade";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 75;
+            this.Column3.Width = 39;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Cidade";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 75;
+            this.Column4.Width = 39;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Cidade";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 75;
+            this.Column5.Width = 39;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Cidade";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            this.Column6.Width = 75;
+            this.Column6.Width = 39;
             // 
             // label4
             // 
@@ -264,13 +267,29 @@
             this.lsbDestino.FormattingEnabled = true;
             this.lsbDestino.ItemHeight = 16;
             this.lsbDestino.Items.AddRange(new object[] {
-            "  0 - Acheron          ",
-            "  1 - Arena           ",
-            "  2 - Arrakeen       ",
-            "  3 - Bakhuysen       ",
-            "  4 - Bradbury ",
-            "  5 - Burroughs       ",
-            "  6 - Cairo            "});
+            "  0  - Acheron          ",
+            "  1  - Arena           ",
+            "  2  - Arrakeen       ",
+            "  3  - Bakhuysen       ",
+            "  4  - Bradbury ",
+            "  5  - Burroughs       ",
+            "  6  - Cairo",
+            "  7  - Dumont",
+            "  8  - Echus Overlook",
+            "  9  - Esperança",
+            " 10 - Gondor          ",
+            " 11 - Lakefront         ",
+            " 12 - Lowell          ",
+            " 13 - Moria         ",
+            " 14 - Nicosia          ",
+            " 15 - Odessa         ",
+            " 16 - Perseverança    ",
+            " 17 - Rowan           ",
+            " 18 - Senzeni Na       ",
+            " 19 - Sheffield        ",
+            " 20 - Temperança      ",
+            " 21 - Tharsis          ",
+            " 22 - Underhill      "});
             this.lsbDestino.Location = new System.Drawing.Point(1038, 129);
             this.lsbDestino.Name = "lsbDestino";
             this.lsbDestino.Size = new System.Drawing.Size(177, 84);
@@ -293,13 +312,29 @@
             this.lsbOrigem.FormattingEnabled = true;
             this.lsbOrigem.ItemHeight = 16;
             this.lsbOrigem.Items.AddRange(new object[] {
-            "  0 - Acheron          ",
-            "  1 - Arena           ",
-            "  2 - Arrakeen       ",
-            "  3 - Bakhuysen       ",
-            "  4 - Bradbury ",
-            "  5 - Burroughs       ",
-            "  6 - Cairo            "});
+            "  0  - Acheron          ",
+            "  1  - Arena           ",
+            "  2  - Arrakeen       ",
+            "  3  - Bakhuysen       ",
+            "  4  - Bradbury ",
+            "  5  - Burroughs       ",
+            "  6  - Cairo",
+            "  7  - Dumont",
+            "  8  - Echus Overlook",
+            "  9  - Esperança",
+            " 10 - Gondor          ",
+            " 11 - Lakefront         ",
+            " 12 - Lowell          ",
+            " 13 - Moria         ",
+            " 14 - Nicosia          ",
+            " 15 - Odessa         ",
+            " 16 - Perseverança    ",
+            " 17 - Rowan           ",
+            " 18 - Senzeni Na       ",
+            " 19 - Sheffield        ",
+            " 20 - Temperança      ",
+            " 21 - Tharsis          ",
+            " 22 - Underhill      "});
             this.lsbOrigem.Location = new System.Drawing.Point(1038, 25);
             this.lsbOrigem.Name = "lsbOrigem";
             this.lsbOrigem.Size = new System.Drawing.Size(177, 84);
@@ -336,7 +371,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Projeto 3 - busca de caminhos entre cidades";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tpRotas.ResumeLayout(false);
             this.tpRotas.PerformLayout();

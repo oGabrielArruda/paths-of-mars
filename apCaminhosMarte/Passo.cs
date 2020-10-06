@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace apCaminhosMarte
 {
-    class Caminho : ICloneable
+    class Passo : ICloneable
     {
         Cidade origem, destino;
         int distancia, tempo, custo;
 
-        public Caminho(Cidade origem, Cidade destino, int distancia, int tempo, int custo)
+        public Passo(Cidade origem, Cidade destino, int distancia, int tempo, int custo)
         {
             this.origem = origem;
             this.destino = destino;
@@ -32,7 +32,7 @@ namespace apCaminhosMarte
 
         public object Clone()
         {
-            Caminho c = new Caminho(this.origem, this.destino, this.distancia, this.tempo, this.custo);
+            Passo c = new Passo(this.origem, this.destino, this.distancia, this.tempo, this.custo);
             return c;
         }
     }

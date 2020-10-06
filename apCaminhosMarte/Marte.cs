@@ -2,6 +2,7 @@
 // Nouani Gabriel Sanches 19194
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace apCaminhosMarte
     class Marte
     {
         private ArvoreCidades arvoreCidades;
-        private Caminho[,] matrizAdjacencias;
+        private Passo[,] matrizAdjacencias;
         private const int largura = 4096, altura = 2048;
 
         /**
@@ -52,9 +53,9 @@ namespace apCaminhosMarte
             return new Cidade(id, nome, new Coordenada(x, y));
         }
 
-        private Caminho[,] gerarMatriz(string nomeArq, int qtdCidades)
+        private Passo[,] gerarMatriz(string nomeArq, int qtdCidades)
         {
-            Caminho[,] matrizAdjacencias = new Caminho[qtdCidades, qtdCidades];
+            Passo[,] matrizAdjacencias = new Passo[qtdCidades, qtdCidades];
             StreamReader leitorDeCaminhosCidades = new StreamReader(nomeArq);
 
             while (!leitorDeCaminhosCidades.EndOfStream)
@@ -67,19 +68,19 @@ namespace apCaminhosMarte
                 int custo = int.Parse(linha.Substring(15, 5));
 
 
-                Caminho c = new Caminho(arvoreCidades.BuscarCidade(idOrigem), arvoreCidades.BuscarCidade(idDestino), distancia, tempo, custo);
+                Passo c = new Passo(arvoreCidades.BuscarCidade(idOrigem), arvoreCidades.BuscarCidade(idDestino), distancia, tempo, custo);
                 matrizAdjacencias[idOrigem, idDestino] = c;
             }
 
             return matrizAdjacencias;
         }
 
-        public void DesenharCidades(PictureBox pb)
+        public void DesenharCidades(Graphics g)
         {
-            arvoreCidades.DesenharCidades(pb);
+            arvoreCidades.DesenharCidades(g);
         }
 
-        public List<List<Caminho>> AcharCaminhos(int idOrigem, int idDestino)
+        public List<List<Passo>> AcharCaminhos(int idOrigem, int idDestino)
         {
             Cidade origem = this.arvoreCidades.BuscarCidade(idOrigem);
             Cidade destino = this.arvoreCidades.BuscarCidade(idDestino);
