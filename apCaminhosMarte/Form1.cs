@@ -22,10 +22,6 @@ namespace apCaminhosMarte
 
         List<List<Passo>> caminhos;
         List<Passo> melhorCaminho;
-        private void TxtCaminhos_DoubleClick(object sender, EventArgs e)
-        {
-           
-        }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -82,24 +78,31 @@ namespace apCaminhosMarte
             }
 
         }
+
         private void dgvCaminhos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
+            Application.DoEvents();
+
             int linha = dgvCaminhos.CurrentCell.RowIndex;
             List<Passo> caminho = this.caminhos[linha];
 
             Graphics g = pbMapa.CreateGraphics();
 
+            Pen pen = new Pen(Color.Blue, 3);
             foreach (Passo p in caminho)
             {
-                g.DrawLine(Pens.Blue, new Point(p.Origem.Coord.X/4, p.Origem.Coord.Y/4), new Point(p.Destino.Coord.X/4, p.Destino.Coord.Y/4));
-
+                g.DrawLine(pen, new Point(p.Origem.Coord.X/4, p.Origem.Coord.Y/4), new Point(p.Destino.Coord.X/4, p.Destino.Coord.Y/4));
             }
 
+            marte.DesenharCidades(g);
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
             marte = new Marte("CidadesMarte.txt", "CaminhosEntreCidadesMarte.txt");
+            pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
+            Application.DoEvents();
             marte.DesenharCidades(pbMapa.CreateGraphics());
         }
     }

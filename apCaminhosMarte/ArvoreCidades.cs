@@ -19,8 +19,8 @@ namespace apCaminhosMarte
         {
             if(atual != null)
             {
-                SolidBrush preenchimento = new SolidBrush(Color.Blue);
-                g.FillEllipse(preenchimento, atual.Info.Coord.X/4, atual.Info.Coord.Y/4, 10, 10);
+                SolidBrush preenchimento = new SolidBrush(Color.Red);
+                g.FillEllipse(preenchimento, atual.Info.Coord.X/4 - 7, atual.Info.Coord.Y/4 - 7, 15, 15);
 
                 desenharCidadesRec(atual.Esq, g);
                 desenharCidadesRec(atual.Dir, g);
