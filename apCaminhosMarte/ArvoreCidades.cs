@@ -20,8 +20,10 @@ namespace apCaminhosMarte
             if(atual != null)
             {
                 SolidBrush preenchimento = new SolidBrush(Color.Red);
-                g.FillEllipse(preenchimento, atual.Info.Coord.X/4 - 7, atual.Info.Coord.Y/4 - 7, 15, 15);
-
+                int x = atual.Info.Coord.X / 4;
+                int y = atual.Info.Coord.Y / 4;
+                g.FillEllipse(preenchimento, x - 7, y - 7, 15, 15);
+                g.DrawString(atual.Info.Nome, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(x + -4, y + 7));              
                 desenharCidadesRec(atual.Esq, g);
                 desenharCidadesRec(atual.Dir, g);
             }
