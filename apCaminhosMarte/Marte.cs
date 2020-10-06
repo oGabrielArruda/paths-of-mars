@@ -75,9 +75,9 @@ namespace apCaminhosMarte
             return matrizAdjacencias;
         }
 
-        public void DesenharCidades(Graphics g)
+        public void DesenharCidades(PictureBox pb)
         {
-            arvoreCidades.DesenharCidades(g);
+            arvoreCidades.DesenharCidades(pb);
         }
 
         public List<List<Passo>> AcharCaminhos(int idOrigem, int idDestino)

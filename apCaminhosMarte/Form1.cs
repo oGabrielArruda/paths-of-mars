@@ -90,12 +90,14 @@ namespace apCaminhosMarte
             Graphics g = pbMapa.CreateGraphics();
 
             Pen pen = new Pen(Color.Blue, 3);
+            int fX = 4096 / pbMapa.Width;
+            int fY = 2048 / pbMapa.Height;
             foreach (Passo p in caminho)
             {
-                g.DrawLine(pen, new Point(p.Origem.Coord.X/4, p.Origem.Coord.Y/4), new Point(p.Destino.Coord.X/4, p.Destino.Coord.Y/4));
+                g.DrawLine(pen, new Point(p.Origem.Coord.X/fX, p.Origem.Coord.Y/fY), new Point(p.Destino.Coord.X/fX, p.Destino.Coord.Y/fY));
             }
 
-            marte.DesenharCidades(g);
+            marte.DesenharCidades(pbMapa);
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -103,7 +105,27 @@ namespace apCaminhosMarte
             marte = new Marte("CidadesMarte.txt", "CaminhosEntreCidadesMarte.txt");
             pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
             Application.DoEvents();
-            marte.DesenharCidades(pbMapa.CreateGraphics());
+            marte.DesenharCidades(pbMapa);
+        }
+
+        private void dgvMelhorCaminho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
+            Application.DoEvents();
+
+            List<Passo> caminho = this.melhorCaminho;
+
+            Graphics g = pbMapa.CreateGraphics();
+
+            int fX = 4096 / pbMapa.Width;
+            int fY = 2048 / pbMapa.Height;
+            Pen pen = new Pen(Color.Blue, 3);
+            foreach (Passo p in caminho)
+            {
+                g.DrawLine(pen, new Point(p.Origem.Coord.X / fX, p.Origem.Coord.Y / fY), new Point(p.Destino.Coord.X / fX, p.Destino.Coord.Y / fY));
+            }
+
+            marte.DesenharCidades(pbMapa);
         }
     }
 }

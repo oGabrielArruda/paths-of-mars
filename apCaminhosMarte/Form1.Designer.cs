@@ -124,6 +124,7 @@
             this.dgvMelhorCaminho.RowHeadersVisible = false;
             this.dgvMelhorCaminho.Size = new System.Drawing.Size(277, 71);
             this.dgvMelhorCaminho.TabIndex = 10;
+            this.dgvMelhorCaminho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMelhorCaminho_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
