@@ -52,7 +52,7 @@ namespace apCaminhosMarte
          */
         public void DesenharArvore(Graphics g)
         {
-            desenharArvoreRec(true, base.raiz, 660, 5, (Math.PI / 180) * 90, 1.20, 250, g);
+            desenharArvoreRec(true, base.raiz, 660, 5, (Math.PI / 180) * 90, 1.4, 400, g);
         }
 
         /**
@@ -72,13 +72,13 @@ namespace apCaminhosMarte
                     yf = 25;
                 g.DrawLine(caneta, x, y, xf, yf);
                 desenharArvoreRec(false, raiz.Esq, xf, yf, Math.PI / 2 + incremento,
-                incremento * 0.60, comprimento * 0.8, g);
+                incremento * 0.6, comprimento * 0.7, g);
                 desenharArvoreRec(false, raiz.Dir, xf, yf, Math.PI / 2 - incremento,
-                incremento * 0.60, comprimento * 0.8, g);
-                SolidBrush preenchimento = new SolidBrush(Color.Blue);
-                g.FillEllipse(preenchimento, xf - 25, yf - 15, 42, 30);
-                g.DrawString(Convert.ToString(raiz.Info.ToString()), new Font("Comic Sans", 10),
-                new SolidBrush(Color.Yellow), xf - 23, yf - 7);
+                incremento * 0.6, comprimento * 0.7, g);
+                SolidBrush preenchimento = new SolidBrush(Color.LightGreen);
+                g.FillEllipse(preenchimento, xf - 25, yf - 15, 100, 30);
+                g.DrawString(Convert.ToString(raiz.Info.ToString()), new Font("Comic Sans", 10, FontStyle.Bold),
+                new SolidBrush(Color.Black), xf - 23, yf - 7);
             }
         }
 
