@@ -114,5 +114,19 @@ namespace apCaminhosMarte
             Application.DoEvents();
             marte.DesenharCidades(pbMapa);
         }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            /*if (tbMarte.SelectedIndex == 1)
+            {
+                marte.DesenharArvore(pbArvore);
+                Application.DoEvents();
+            }*/
+        }
+
+        private void pbArvore_Paint(object sender, PaintEventArgs e)
+        {
+            marte.DesenharArvore(e.Graphics);
+        }
     }
 }

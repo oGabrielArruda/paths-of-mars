@@ -80,6 +80,11 @@ namespace apCaminhosMarte
             arvoreCidades.DesenharCidades(pb);
         }
 
+        public void DesenharArvore(Graphics g)
+        {
+            arvoreCidades.DesenharArvore(g);
+        }
+
         public List<List<Passo>> AcharCaminhos(int idOrigem, int idDestino)
         {
             Cidade origem = this.arvoreCidades.BuscarCidade(idOrigem);

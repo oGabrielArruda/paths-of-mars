@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbMarte = new System.Windows.Forms.TabControl();
             this.tpRotas = new System.Windows.Forms.TabPage();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvMelhorCaminho = new System.Windows.Forms.DataGridView();
@@ -54,25 +54,29 @@
             this.lsbOrigem = new System.Windows.Forms.ListBox();
             this.pbMapa = new System.Windows.Forms.PictureBox();
             this.tpArvore = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
+            this.pbArvore = new System.Windows.Forms.PictureBox();
+            this.tbMarte.SuspendLayout();
             this.tpRotas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMelhorCaminho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCaminhos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMapa)).BeginInit();
+            this.tpArvore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArvore)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tbMarte
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbMarte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tpRotas);
-            this.tabControl1.Controls.Add(this.tpArvore);
-            this.tabControl1.Location = new System.Drawing.Point(2, 4);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1326, 551);
-            this.tabControl1.TabIndex = 0;
+            this.tbMarte.Controls.Add(this.tpRotas);
+            this.tbMarte.Controls.Add(this.tpArvore);
+            this.tbMarte.Location = new System.Drawing.Point(2, 4);
+            this.tbMarte.Name = "tbMarte";
+            this.tbMarte.SelectedIndex = 0;
+            this.tbMarte.Size = new System.Drawing.Size(1326, 551);
+            this.tbMarte.TabIndex = 0;
+            this.tbMarte.SelectedIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tpRotas
             // 
@@ -356,6 +360,7 @@
             // 
             // tpArvore
             // 
+            this.tpArvore.Controls.Add(this.pbArvore);
             this.tpArvore.Location = new System.Drawing.Point(4, 22);
             this.tpArvore.Name = "tpArvore";
             this.tpArvore.Padding = new System.Windows.Forms.Padding(3);
@@ -364,30 +369,41 @@
             this.tpArvore.Text = "Árvore de Cidades";
             this.tpArvore.UseVisualStyleBackColor = true;
             // 
+            // pbArvore
+            // 
+            this.pbArvore.Location = new System.Drawing.Point(6, 6);
+            this.pbArvore.Name = "pbArvore";
+            this.pbArvore.Size = new System.Drawing.Size(1305, 510);
+            this.pbArvore.TabIndex = 0;
+            this.pbArvore.TabStop = false;
+            this.pbArvore.Paint += new System.Windows.Forms.PaintEventHandler(this.pbArvore_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1329, 554);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbMarte);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Projeto 3 - busca de caminhos entre cidades";
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.tabControl1.ResumeLayout(false);
+            this.tbMarte.ResumeLayout(false);
             this.tpRotas.ResumeLayout(false);
             this.tpRotas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMelhorCaminho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCaminhos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMapa)).EndInit();
+            this.tpArvore.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbArvore)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbMarte;
         private System.Windows.Forms.TabPage tpRotas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -412,6 +428,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.PictureBox pbArvore;
     }
 }
 

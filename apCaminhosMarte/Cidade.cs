@@ -29,5 +29,10 @@ namespace apCaminhosMarte
         {
             return this.id.CompareTo(other.id);
         }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

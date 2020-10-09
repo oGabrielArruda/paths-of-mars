@@ -32,6 +32,39 @@ namespace apCaminhosMarte
             }
         }
 
+        public void DesenharArvore(Graphics g)
+        {
+            desenharArvoreRec(true, base.raiz, 660, 5, (Math.PI / 180) * 90, 1.20, 250, g);
+        }
+
+        private void desenharArvoreRec(bool primeiraVez, NoArvore<Cidade> raiz,
+                                    int x, int y, double angulo, double incremento,
+                                    double comprimento, Graphics g)
+        {
+            int xf, yf;
+            if (raiz != null)
+            {
+                Pen caneta = new Pen(Color.Red);
+                //g.DrawLine(caneta, new Point(10, 10), new Point(20, 20));*/
+                xf = (int)Math.Round(x + Math.Cos(angulo) * comprimento);
+                yf = (int)Math.Round(y + Math.Sin(angulo) * comprimento);
+                double a = (180 * angulo) / Math.PI;
+                if (a < 0)
+                    a = 3;
+                if (primeiraVez)
+                    yf = 25;
+                g.DrawLine(caneta, x, y, xf, yf);
+                desenharArvoreRec(false, raiz.Esq, xf, yf, Math.PI / 2 + incremento,
+                incremento * 0.60, comprimento * 0.8, g);
+                desenharArvoreRec(false, raiz.Dir, xf, yf, Math.PI / 2 - incremento,
+                incremento * 0.60, comprimento * 0.8, g);
+                SolidBrush preenchimento = new SolidBrush(Color.Blue);
+                g.FillEllipse(preenchimento, xf - 25, yf - 15, 42, 30);
+                g.DrawString(Convert.ToString(raiz.Info.ToString()), new Font("Comic Sans", 10),
+                new SolidBrush(Color.Yellow), xf - 23, yf - 7);
+            }
+        }
+
         public Cidade BuscarCidade(int id)
         {
             return base.BuscaDado(new Cidade(id, "", null));
