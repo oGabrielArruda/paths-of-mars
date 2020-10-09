@@ -46,24 +46,31 @@ namespace apCaminhosMarte
 
                 foreach (List<Passo> caminho in caminhos) // para cada caminho na lista de caminhos
                 {
-                    if(caminho.Count > maiorDistancia) // se o caminho atual for maior que o maior caminho
+
+                    // 'for' para ajustar as colunas do datagridview
+                    if(caminho.Count > maiorDistancia) 
                     {
-                        dgvCaminhos.ColumnCount = caminho.Count(); // troca-se o valor de colunas do datagridview, 
-                        maiorDistancia = caminho.Count();          // para podermos usar todas suas colunas
+                        dgvCaminhos.ColumnCount = caminho.Count(); 
+                        maiorDistancia = caminho.Count();          
                     }
 
+
+                    // preenche as colunas do caminho, salvando a distancia pecorrida
                     int j = 0;
-                    
-                    foreach (Passo passo in caminho) // para cada passo realizado no caminho
+                    int distanciaTotal = 0;
+                    foreach (Passo passo in caminho) 
                     {
-                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Nome}"; // insere o destino do passo no datagridview
+                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Nome}"; 
                         j++;
+                        distanciaTotal += passo.Distancia;
                     }
 
-                    if (j < menorDistancia) // se o tamanho do caminho atual for menor que o do menorCaminho
+
+                    // verifica se o caminho atual é menor que os já feitos
+                    if (distanciaTotal < menorDistancia) 
                     {
-                        menorCaminho = caminho; // troca-se a variável do menor caminho feito
-                        menorDistancia = j;
+                        menorCaminho = caminho; 
+                        menorDistancia = distanciaTotal;                       
                     }
 
                     i++;
@@ -114,6 +121,10 @@ namespace apCaminhosMarte
         {
             if(caminho != null)
             {
+                int distancia = 0;
+                int custo = 0;
+                int tempo = 0;
+
                 Graphics g = pbMapa.CreateGraphics();
                 Pen pen = new Pen(Color.Blue, 3);
 
@@ -124,9 +135,14 @@ namespace apCaminhosMarte
                 foreach (Passo p in caminho)
                 {
                     g.DrawLine(pen, new Point(p.Origem.Coord.X / fX, p.Origem.Coord.Y / fY), new Point(p.Destino.Coord.X / fX, p.Destino.Coord.Y / fY));
+                    distancia += p.Distancia;
+                    custo += p.Custo;
+                    tempo += p.Tempo;
                 }
                 Application.DoEvents();
                 marte.DesenharCidades(pbMapa, this.imgWidth, this.imgHeight);
+
+                MessageBox.Show($"Distância: {distancia} \nTempo: {tempo} \nCusto: {custo}");
             }           
         }
 
