@@ -35,8 +35,8 @@ namespace apCaminhosMarte
             if(atual != null)
             {
                 SolidBrush preenchimento = new SolidBrush(Color.Red);
-                int x = atual.Info.Coord.X / (4096/pb.Width);
-                int y = atual.Info.Coord.Y / (2048 / pb.Height);
+                int x = atual.Info.Coord.X / (imgWidth/pb.Width);
+                int y = atual.Info.Coord.Y / (imgHeight / pb.Height);
 
                 Graphics g = pb.CreateGraphics();
 
