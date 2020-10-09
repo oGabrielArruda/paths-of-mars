@@ -76,7 +76,6 @@
             this.tbMarte.SelectedIndex = 0;
             this.tbMarte.Size = new System.Drawing.Size(1326, 551);
             this.tbMarte.TabIndex = 0;
-            this.tbMarte.SelectedIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tpRotas
             // 

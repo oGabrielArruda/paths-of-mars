@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace apCaminhosMarte
 {
+    /**
+     * Classe que armazena a ligação entre uma cidade e outra
+     */
     class Passo : ICloneable
     {
         Cidade origem, destino;

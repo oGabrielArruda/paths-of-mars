@@ -15,7 +15,6 @@ namespace apCaminhosMarte
     {
         private ArvoreCidades arvoreCidades;
         private Passo[,] matrizAdjacencias;
-        private const int largura = 4096, altura = 2048;
 
         /**
          * Construtor da classe Marte
@@ -75,9 +74,9 @@ namespace apCaminhosMarte
             return matrizAdjacencias;
         }
 
-        public void DesenharCidades(PictureBox pb)
+        public void DesenharCidades(PictureBox pb, int imgWidth, int imgHeight)
         {
-            arvoreCidades.DesenharCidades(pb);
+            arvoreCidades.DesenharCidades(pb, imgWidth, imgHeight);
         }
 
         public void DesenharArvore(Graphics g)

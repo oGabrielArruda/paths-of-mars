@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArvoreBinaria.cs" />
+    <Compile Include="ArvoreBusca.cs" />
     <Compile Include="ArvoreCidades.cs" />
     <Compile Include="Cidade.cs" />
     <Compile Include="Coordenada.cs" />
