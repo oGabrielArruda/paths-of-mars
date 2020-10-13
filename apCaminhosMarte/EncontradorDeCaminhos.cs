@@ -13,6 +13,8 @@ namespace apCaminhosMarte
         Cidade origem, destino;
         Passo[,] matrizDeAdjacencias;
         List<List<Passo>> caminhosEncontrados;
+        List<Passo> caminhoFeito;
+        bool[] jaPassou;
 
         /**
          * Construtor recebe a matriz de adjacencias, a cidade de origem, e o destino desejado
@@ -22,6 +24,8 @@ namespace apCaminhosMarte
             this.origem = origem;
             this.destino = destino;
             this.matrizDeAdjacencias = matrizDeAdjacencias;
+            this.jaPassou = new bool[matrizDeAdjacencias.GetLength(0)];
+            this.caminhoFeito = new List<Passo>();
         }   
         
         /**
@@ -36,7 +40,7 @@ namespace apCaminhosMarte
 
             // chama-se o método de encontrar caminhos recursivamente, passando a origem como local atual, 
             // uma instância de lista para salvar o caminho feito, e uma matriz booleana pra verificar os locais já visitados
-            encontrarRecursivo(this.origem, new List<Passo>(), new bool[this.matrizDeAdjacencias.GetLength(0)]);
+            encontrarRecursivo(this.origem);
 
             if (this.caminhosEncontrados.Count() == 0)
                 throw new Exception("Nenhum caminho encontrado!");
@@ -46,29 +50,29 @@ namespace apCaminhosMarte
 
         /**
          * Método que encontra os caminhos recursivamente e os salva na lista global
-         * São passados três parâmetros: a cidade atual, a lista com os passos já feitos, e a matriz de locais visitados
-         * Primeiramente marcamos que passamos pelo local atual na matriz.
-         * Depois, percorremos a linha do local atual no grafo procurando um novo destino (coluna).
-         * Caso a coluna não é nula, e ainda não passamos por ela, nos movimentamos, adiconando o passo na lista do caminho feito
-         * e trocando a linha atual pela coluna encontrada.
-         * Ao chegar em uma coluna igual ao destino, salvamos o caminho clonado na lista global da classe
+         * É passado um único parâmetro: a cidade atual. A partir dela, procuraremos outras cidades para mover no grafo         
+         * Poderia-se passar o vetor jaPassou e a lista de caminhoFeito como parâmetros para a recursão,
+         * mas isso ocuparia muita memória. Então os deixamos globais na classe.
          */
-        private void encontrarRecursivo(Cidade cidadeAtual, List<Passo> caminhoFeito, bool[] jaPassou)
+        private void encontrarRecursivo(Cidade cidadeAtual)
         {
-            jaPassou[cidadeAtual.Id] = true;
-
-            for(int j = 0; j < this.matrizDeAdjacencias.GetLength(0); j++)
+            for(int j = 0; j < this.matrizDeAdjacencias.GetLength(0); j++)              // percorre as possíveis ligações
             {
-                Passo caminho = this.matrizDeAdjacencias[cidadeAtual.Id, j];
-                if (caminho != null && !jaPassou[j])
+                Passo caminho = this.matrizDeAdjacencias[cidadeAtual.Id, j];           // ligação entre cidade atual e cidade do id 'j'
+                if (caminho != null && !jaPassou[j])                                   // se existir a ligação, e se ainda não passamos pela cidade j
                 {
-                    caminhoFeito.Add(caminho);
+                    this.caminhoFeito.Add(caminho);                                    // adicionamos o movimento da cidadeAtual para cidade J na nossa lista
 
-                    if (j == destino.Id)
-                        caminhosEncontrados.Add(caminhoFeito.Select(item => (Passo)item.Clone()).ToList());
+                    if (j == this.destino.Id)                                          // se a cidade para que nos movemos for a cidade procurada
+                        caminhosEncontrados.Add(caminhoFeito.Select(item => (Passo)item.Clone()).ToList());  // adicionamos o caminho na lista de caminhos possíveis
                     else
-                        encontrarRecursivo(caminho.Destino, caminhoFeito, jaPassou);
-                    caminhoFeito.RemoveAt(caminhoFeito.Count - 1);
+                    {                                                       // se não for o destino prucurado
+                        jaPassou[caminho.Destino.Id] = true;                // marcamos que já passamos pela próxima cidade           
+                        encontrarRecursivo(caminho.Destino);                // chamamos o método recursivo, para continuar a busca
+                        jaPassou[caminho.Destino.Id] = false;               // ao voltar, marcamos o jaPassou da cidade destino como false
+                    }                                                       
+                    caminhoFeito.RemoveAt(caminhoFeito.Count - 1);          // removemos o passo realizado da lista
+                                                                            // e continuamos o loop, a fim de achar novos possíveis caminhos
                 }
             }
         }

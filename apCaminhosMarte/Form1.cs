@@ -60,7 +60,7 @@ namespace apCaminhosMarte
                     int distanciaTotal = 0;
                     foreach (Passo passo in caminho) 
                     {
-                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Nome}"; 
+                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Id}"; 
                         j++;
                         distanciaTotal += passo.Distancia;
                     }
