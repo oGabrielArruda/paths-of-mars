@@ -67,7 +67,7 @@ namespace apCaminhosMarte
                 int custo = int.Parse(linha.Substring(15, 5));
 
 
-                Passo c = new Passo(arvoreCidades.BuscarCidade(idOrigem), arvoreCidades.BuscarCidade(idDestino), distancia, tempo, custo);
+                Passo c = new Passo(arvoreCidades.BuscarDado(new Cidade(idOrigem)), arvoreCidades.BuscarDado(new Cidade(idDestino)), distancia, tempo, custo);
                 matrizAdjacencias[idOrigem, idDestino] = c;
             }
 
@@ -86,8 +86,8 @@ namespace apCaminhosMarte
 
         public List<List<Passo>> AcharCaminhos(int idOrigem, int idDestino)
         {
-            Cidade origem = this.arvoreCidades.BuscarCidade(idOrigem);
-            Cidade destino = this.arvoreCidades.BuscarCidade(idDestino);
+            Cidade origem = this.arvoreCidades.BuscarDado(new Cidade(idOrigem));
+            Cidade destino = this.arvoreCidades.BuscarDado(new Cidade(idDestino));
             EncontradorDeCaminhos encontrador = new EncontradorDeCaminhos(this.matrizAdjacencias, origem, destino);
             return encontrador.EncontrarCaminhos();
         }

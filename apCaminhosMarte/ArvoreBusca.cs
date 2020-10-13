@@ -42,7 +42,7 @@ namespace apCaminhosMarte
             }
         }
 
-        public Dado BuscaDado(Dado dadoBuscado)
+        public Dado BuscarDado(Dado dadoBuscado)
         {
             return acharDado(dadoBuscado, this.raiz);
         }

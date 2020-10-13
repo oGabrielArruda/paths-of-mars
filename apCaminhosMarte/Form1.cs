@@ -27,6 +27,11 @@ namespace apCaminhosMarte
         
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            // limpa o mapa
+            pbMapa.Image = Image.FromFile("mars_political_map_by_axiaterraartunion_d4vfxdf-pre.jpg");
+            Application.DoEvents();
+            marte.DesenharCidades(pbMapa, this.imgWidth, this.imgHeight);
+
             // limpa os datagridview's
             dgvMelhorCaminho.Rows.Clear();
             dgvCaminhos.Rows.Clear();
@@ -60,7 +65,7 @@ namespace apCaminhosMarte
                     int distanciaTotal = 0;
                     foreach (Passo passo in caminho) 
                     {
-                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Id}"; 
+                        dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Nome}"; 
                         j++;
                         distanciaTotal += passo.Distancia;
                     }

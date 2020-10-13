@@ -18,6 +18,10 @@ namespace apCaminhosMarte
         public string Nome { get => nome; set => nome = value; }
         public Coordenada Coord { get => coord; set => coord = value; }
 
+        public Cidade(int id)
+        {
+            this.id = id;
+        }
         public Cidade(int id, string nome, Coordenada coord)
         {
             this.id = id;

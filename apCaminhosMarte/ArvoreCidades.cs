@@ -81,14 +81,5 @@ namespace apCaminhosMarte
                 new SolidBrush(Color.Black), xf - 23, yf - 7);
             }
         }
-
-        /**
-         * Método que busca a cidade pelo id passado,
-         * chamando o método busca dado na classe pai
-         */
-        public Cidade BuscarCidade(int id)
-        {
-            return base.BuscaDado(new Cidade(id, "", null));
-        }
     }
 }
