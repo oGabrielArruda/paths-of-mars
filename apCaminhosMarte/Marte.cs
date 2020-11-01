@@ -89,7 +89,7 @@ namespace apCaminhosMarte
             Cidade origem = this.arvoreCidades.BuscarDado(new Cidade(idOrigem));
             Cidade destino = this.arvoreCidades.BuscarDado(new Cidade(idDestino));
             EncontradorDeCaminhos encontrador = new EncontradorDeCaminhos(this.matrizAdjacencias, origem, destino);
-            return encontrador.EncontrarCaminhos();
+            return encontrador.EncontrarRecursivamente();
         }
     }
 }

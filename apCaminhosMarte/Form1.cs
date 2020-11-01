@@ -151,6 +151,11 @@ namespace apCaminhosMarte
             }           
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void pbArvore_Paint(object sender, PaintEventArgs e)
         {
             // ao exibir o picturebox da arvore, chamamos o método que a desenha

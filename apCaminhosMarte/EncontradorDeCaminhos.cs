@@ -34,7 +34,7 @@ namespace apCaminhosMarte
          * usaria muita memória. Já que a cada vez que a função chamasse a si mesma, uma nova lista contendo
          * todos os caminhos seria empilhada,            
          */
-        public List<List<Passo>> EncontrarCaminhos()
+        public List<List<Passo>> EncontrarRecursivamente()
         {                         
             this.caminhosEncontrados = new List<List<Passo>>();
 
@@ -77,5 +77,9 @@ namespace apCaminhosMarte
             }
         }
 
+        public void encontrarComPilha()
+        {
+
+        }
     }
 }
