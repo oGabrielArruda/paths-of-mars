@@ -39,7 +39,8 @@ namespace apCaminhosMarte
             try
             {
                 // busca todos os caminhos passando o índice (ID) das cidades selecionadas como parâmetro
-                List<List<Passo>> caminhos = marte.AcharCaminhos(lsbOrigem.SelectedIndex, lsbDestino.SelectedIndex);
+                List<List<Passo>> caminhos = marte.AcharCaminhos(lsbOrigem.SelectedIndex, lsbDestino.SelectedIndex,
+                    recursivo: rbRecursao.Checked, pilha: rbPilha.Checked, dijkstra: rbDijkstra.Checked);
 
                 List<Passo> menorCaminho = null;
                 int menorDistancia = int.MaxValue;

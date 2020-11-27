@@ -34,17 +34,18 @@ namespace apCaminhosMarte
          * usaria muita memória. Já que a cada vez que a função chamasse a si mesma, uma nova lista contendo
          * todos os caminhos seria empilhada,            
          */
-        public List<List<Passo>> EncontrarRecursivamente()
+        public List<List<Passo>> EncontrarCaminhos(bool recursao, bool pilha, bool dijkstra)
         {                         
             this.caminhosEncontrados = new List<List<Passo>>();
+            this.jaPassou = new bool[matrizDeAdjacencias.GetLength(0)];
 
-            // chama-se o método de encontrar caminhos recursivamente, passando a origem como local atual, 
-            // uma instância de lista para salvar o caminho feito, e uma matriz booleana pra verificar os locais já visitados
-            encontrarRecursivo(this.origem);
+            if (recursao) encontrarRecursivo(this.origem);
+            else if (pilha) encontrarComPilha();
+            //else if (dijkstra) encontrarComDjikstra();
 
             if (this.caminhosEncontrados.Count() == 0)
                 throw new Exception("Nenhum caminho encontrado!");
-
+            
             return this.caminhosEncontrados;
         }
 
@@ -77,9 +78,51 @@ namespace apCaminhosMarte
             }
         }
 
-        public void encontrarComPilha()
+        private void encontrarComPilha()
         {
+            Stack<Passo> pilhaCaminho = new Stack<Passo>();
+            bool temCaminhoPossivel = true;
+            bool movimentou = false;
+            int idAtual = this.origem.Id;
+            int start = 0;
 
+            while(temCaminhoPossivel)
+            {
+                jaPassou[idAtual] = true;
+                movimentou = false;
+                for(int j = start; j < this.matrizDeAdjacencias.GetLength(0); j++)
+                {
+                    if(this.matrizDeAdjacencias[idAtual, j] != null && !jaPassou[j])
+                    {
+                        if(j == this.destino.Id)
+                        {
+                            pilhaCaminho.Push(this.matrizDeAdjacencias[idAtual, j]);
+                            this.caminhosEncontrados.Add(pilhaCaminho.Select(item => (Passo)item.Clone()).ToList());
+                            pilhaCaminho.Pop();
+                        }
+                        else
+                        {
+                            pilhaCaminho.Push(this.matrizDeAdjacencias[idAtual, j]);
+                            idAtual = j;
+                            movimentou = true;
+                            start = 0;
+                            break;
+                        }
+                    }
+                }
+
+                if(!movimentou)
+                {
+                    if (pilhaCaminho.Count() == 0)
+                        temCaminhoPossivel = false;
+                    else
+                    {
+                        jaPassou[idAtual] = false;
+                        start = idAtual + 1;
+                        idAtual = pilhaCaminho.Pop().Origem.Id;                        
+                    }                        
+                }
+            }
         }
     }
 }
