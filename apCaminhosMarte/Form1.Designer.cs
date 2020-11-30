@@ -76,15 +76,13 @@
             // 
             // tbMarte
             // 
-            this.tbMarte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMarte.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbMarte.Controls.Add(this.tpRotas);
             this.tbMarte.Controls.Add(this.tpArvore);
-            this.tbMarte.Location = new System.Drawing.Point(2, 4);
+            this.tbMarte.Location = new System.Drawing.Point(2, 6);
             this.tbMarte.Name = "tbMarte";
             this.tbMarte.SelectedIndex = 0;
-            this.tbMarte.Size = new System.Drawing.Size(1494, 738);
+            this.tbMarte.Size = new System.Drawing.Size(1347, 736);
             this.tbMarte.TabIndex = 0;
             // 
             // tpRotas
@@ -104,7 +102,7 @@
             this.tpRotas.Location = new System.Drawing.Point(4, 22);
             this.tpRotas.Name = "tpRotas";
             this.tpRotas.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRotas.Size = new System.Drawing.Size(1486, 712);
+            this.tpRotas.Size = new System.Drawing.Size(1339, 710);
             this.tpRotas.TabIndex = 0;
             this.tpRotas.Text = "Rotas entre cidades";
             this.tpRotas.UseVisualStyleBackColor = true;
@@ -114,7 +112,7 @@
             this.groupBox2.Controls.Add(this.rbDijkstra);
             this.groupBox2.Controls.Add(this.rbRecursao);
             this.groupBox2.Controls.Add(this.rbPilha);
-            this.groupBox2.Location = new System.Drawing.Point(1300, 219);
+            this.groupBox2.Location = new System.Drawing.Point(1144, 179);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(88, 108);
             this.groupBox2.TabIndex = 14;
@@ -159,7 +157,7 @@
             this.groupBox1.Controls.Add(this.rbCusto);
             this.groupBox1.Controls.Add(this.rbTempo);
             this.groupBox1.Controls.Add(this.rbDistancia);
-            this.groupBox1.Location = new System.Drawing.Point(1206, 219);
+            this.groupBox1.Location = new System.Drawing.Point(1051, 179);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(88, 108);
             this.groupBox1.TabIndex = 13;
@@ -201,8 +199,8 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.Location = new System.Drawing.Point(1205, 383);
+            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscar.Location = new System.Drawing.Point(1050, 293);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(89, 23);
             this.btnBuscar.TabIndex = 11;
@@ -214,7 +212,7 @@
             // 
             this.dgvMelhorCaminho.AllowUserToAddRows = false;
             this.dgvMelhorCaminho.AllowUserToDeleteRows = false;
-            this.dgvMelhorCaminho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMelhorCaminho.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvMelhorCaminho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMelhorCaminho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -223,7 +221,7 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dgvMelhorCaminho.Location = new System.Drawing.Point(1205, 635);
+            this.dgvMelhorCaminho.Location = new System.Drawing.Point(1050, 497);
             this.dgvMelhorCaminho.Name = "dgvMelhorCaminho";
             this.dgvMelhorCaminho.ReadOnly = true;
             this.dgvMelhorCaminho.RowHeadersVisible = false;
@@ -277,7 +275,7 @@
             // 
             this.dgvCaminhos.AllowUserToAddRows = false;
             this.dgvCaminhos.AllowUserToDeleteRows = false;
-            this.dgvCaminhos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCaminhos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvCaminhos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCaminhos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -286,11 +284,11 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.dgvCaminhos.Location = new System.Drawing.Point(1205, 425);
+            this.dgvCaminhos.Location = new System.Drawing.Point(1053, 335);
             this.dgvCaminhos.Name = "dgvCaminhos";
             this.dgvCaminhos.ReadOnly = true;
             this.dgvCaminhos.RowHeadersVisible = false;
-            this.dgvCaminhos.Size = new System.Drawing.Size(277, 181);
+            this.dgvCaminhos.Size = new System.Drawing.Size(271, 143);
             this.dgvCaminhos.TabIndex = 9;
             this.dgvCaminhos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCaminhos_CellClick);
             // 
@@ -338,9 +336,9 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1202, 616);
+            this.label4.Location = new System.Drawing.Point(1048, 481);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 7;
@@ -348,9 +346,9 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1202, 409);
+            this.label3.Location = new System.Drawing.Point(1050, 319);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 13);
             this.label3.TabIndex = 5;
@@ -358,9 +356,9 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1203, 113);
+            this.label2.Location = new System.Drawing.Point(1054, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 4;
@@ -368,7 +366,7 @@
             // 
             // lsbDestino
             // 
-            this.lsbDestino.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsbDestino.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lsbDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsbDestino.FormattingEnabled = true;
             this.lsbDestino.ItemHeight = 16;
@@ -396,16 +394,16 @@
             " 20 - Temperança      ",
             " 21 - Tharsis          ",
             " 22 - Underhill      "});
-            this.lsbDestino.Location = new System.Drawing.Point(1206, 129);
+            this.lsbDestino.Location = new System.Drawing.Point(1056, 105);
             this.lsbDestino.Name = "lsbDestino";
-            this.lsbDestino.Size = new System.Drawing.Size(177, 84);
+            this.lsbDestino.Size = new System.Drawing.Size(176, 68);
             this.lsbDestino.TabIndex = 3;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1206, 9);
+            this.label1.Location = new System.Drawing.Point(1053, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 2;
@@ -413,7 +411,7 @@
             // 
             // lsbOrigem
             // 
-            this.lsbOrigem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsbOrigem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lsbOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsbOrigem.FormattingEnabled = true;
             this.lsbOrigem.ItemHeight = 16;
@@ -441,20 +439,18 @@
             " 20 - Temperança      ",
             " 21 - Tharsis          ",
             " 22 - Underhill      "});
-            this.lsbOrigem.Location = new System.Drawing.Point(1206, 25);
+            this.lsbOrigem.Location = new System.Drawing.Point(1053, 18);
             this.lsbOrigem.Name = "lsbOrigem";
-            this.lsbOrigem.Size = new System.Drawing.Size(177, 84);
+            this.lsbOrigem.Size = new System.Drawing.Size(167, 68);
             this.lsbOrigem.TabIndex = 1;
             // 
             // pbMapa
             // 
-            this.pbMapa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMapa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbMapa.Image = ((System.Drawing.Image)(resources.GetObject("pbMapa.Image")));
-            this.pbMapa.Location = new System.Drawing.Point(7, 7);
+            this.pbMapa.Location = new System.Drawing.Point(11, 29);
             this.pbMapa.Name = "pbMapa";
-            this.pbMapa.Size = new System.Drawing.Size(1192, 699);
+            this.pbMapa.Size = new System.Drawing.Size(1024, 512);
             this.pbMapa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMapa.TabIndex = 0;
             this.pbMapa.TabStop = false;
@@ -465,16 +461,17 @@
             this.tpArvore.Location = new System.Drawing.Point(4, 22);
             this.tpArvore.Name = "tpArvore";
             this.tpArvore.Padding = new System.Windows.Forms.Padding(3);
-            this.tpArvore.Size = new System.Drawing.Size(1486, 712);
+            this.tpArvore.Size = new System.Drawing.Size(1185, 559);
             this.tpArvore.TabIndex = 1;
             this.tpArvore.Text = "Árvore de Cidades";
             this.tpArvore.UseVisualStyleBackColor = true;
             // 
             // pbArvore
             // 
+            this.pbArvore.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbArvore.Location = new System.Drawing.Point(6, 6);
             this.pbArvore.Name = "pbArvore";
-            this.pbArvore.Size = new System.Drawing.Size(1305, 510);
+            this.pbArvore.Size = new System.Drawing.Size(1035, 510);
             this.pbArvore.TabIndex = 0;
             this.pbArvore.TabStop = false;
             this.pbArvore.Paint += new System.Windows.Forms.PaintEventHandler(this.pbArvore_Paint);
@@ -483,12 +480,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1444, 741);
+            this.ClientSize = new System.Drawing.Size(1361, 598);
             this.Controls.Add(this.tbMarte);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Projeto 3 - busca de caminhos entre cidades";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tbMarte.ResumeLayout(false);
             this.tpRotas.ResumeLayout(false);
@@ -510,30 +506,6 @@
 
         private System.Windows.Forms.TabControl tbMarte;
         private System.Windows.Forms.TabPage tpRotas;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lsbDestino;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lsbOrigem;
-        private System.Windows.Forms.PictureBox pbMapa;
-        private System.Windows.Forms.TabPage tpArvore;
-        private System.Windows.Forms.DataGridView dgvCaminhos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridView dgvMelhorCaminho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.PictureBox pbArvore;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbDijkstra;
         private System.Windows.Forms.RadioButton rbRecursao;
@@ -542,6 +514,30 @@
         private System.Windows.Forms.RadioButton rbCusto;
         private System.Windows.Forms.RadioButton rbTempo;
         private System.Windows.Forms.RadioButton rbDistancia;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridView dgvMelhorCaminho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridView dgvCaminhos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox lsbDestino;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lsbOrigem;
+        private System.Windows.Forms.PictureBox pbMapa;
+        private System.Windows.Forms.TabPage tpArvore;
+        private System.Windows.Forms.PictureBox pbArvore;
     }
 }
 

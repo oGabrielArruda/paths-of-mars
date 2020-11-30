@@ -40,7 +40,8 @@ namespace apCaminhosMarte
             {
                 // busca todos os caminhos passando o índice (ID) das cidades selecionadas como parâmetro
                 List<List<Passo>> caminhos = marte.AcharCaminhos(lsbOrigem.SelectedIndex, lsbDestino.SelectedIndex,
-                    recursivo: rbRecursao.Checked, pilha: rbPilha.Checked, dijkstra: rbDijkstra.Checked);
+                    recursivo: rbRecursao.Checked, pilha: rbPilha.Checked, dijkstra: rbDijkstra.Checked, rbDistancia.Checked, rbCusto.Checked,
+                    rbTempo.Checked);
 
                 List<Passo> menorCaminho = null;
                 int menorDistancia = int.MaxValue;
@@ -63,20 +64,23 @@ namespace apCaminhosMarte
 
                     // preenche as colunas do caminho, salvando a distancia pecorrida
                     int j = 0;
-                    int distanciaTotal = 0;
+                    int pesoTotal = 0;
                     foreach (Passo passo in caminho) 
                     {
                         dgvCaminhos.Rows[i].Cells[j].Value = $"{passo.Destino.Nome}"; 
                         j++;
-                        distanciaTotal += passo.Distancia;
+
+                        if (rbDistancia.Checked) pesoTotal += passo.Distancia;
+                        else if (rbCusto.Checked) pesoTotal += passo.Custo;
+                        else if (rbTempo.Checked) pesoTotal += passo.Tempo;
                     }
 
 
                     // verifica se o caminho atual é menor que os já feitos
-                    if (distanciaTotal < menorDistancia) 
+                    if (pesoTotal < menorDistancia) 
                     {
                         menorCaminho = caminho; 
-                        menorDistancia = distanciaTotal;                       
+                        menorDistancia = pesoTotal;                       
                     }
 
                     i++;
@@ -150,11 +154,6 @@ namespace apCaminhosMarte
 
                 MessageBox.Show($"Distância: {distancia} \nTempo: {tempo} \nCusto: {custo}");
             }           
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void pbArvore_Paint(object sender, PaintEventArgs e)

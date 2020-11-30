@@ -84,12 +84,12 @@ namespace apCaminhosMarte
             arvoreCidades.DesenharArvore(g);
         }
 
-        public List<List<Passo>> AcharCaminhos(int idOrigem, int idDestino, bool recursivo = false, bool pilha = false, bool dijkstra = false)
+        public List<List<Passo>> AcharCaminhos(int idOrigem, int idDestino, bool recursivo = false, bool pilha = false, bool dijkstra = false, bool distancia = false, bool custo = false, bool tempo = false)
         {
             Cidade origem = this.arvoreCidades.BuscarDado(new Cidade(idOrigem));
             Cidade destino = this.arvoreCidades.BuscarDado(new Cidade(idDestino));
-            EncontradorDeCaminhos encontrador = new EncontradorDeCaminhos(this.matrizAdjacencias, origem, destino);
-            return encontrador.EncontrarCaminhos(recursivo, pilha, dijkstra);
+            EncontradorDeCaminhos encontrador = new EncontradorDeCaminhos(arvoreCidades, this.matrizAdjacencias, origem, destino);
+            return encontrador.EncontrarCaminhos(recursivo, pilha, dijkstra, distancia, custo, tempo);
         }
     }
 }

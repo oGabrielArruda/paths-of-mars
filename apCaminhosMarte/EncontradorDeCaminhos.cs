@@ -14,13 +14,15 @@ namespace apCaminhosMarte
         Passo[,] matrizDeAdjacencias;
         List<List<Passo>> caminhosEncontrados;
         List<Passo> caminhoFeito;
+        ArvoreCidades arvoreCidades;
         bool[] jaPassou;
 
         /**
          * Construtor recebe a matriz de adjacencias, a cidade de origem, e o destino desejado
          */
-        public EncontradorDeCaminhos(Passo[,] matrizDeAdjacencias, Cidade origem, Cidade destino)
+        public EncontradorDeCaminhos(ArvoreCidades arvoreCidades, Passo[,] matrizDeAdjacencias, Cidade origem, Cidade destino)
         {
+            this.arvoreCidades = arvoreCidades;
             this.origem = origem;
             this.destino = destino;
             this.matrizDeAdjacencias = matrizDeAdjacencias;
@@ -34,14 +36,14 @@ namespace apCaminhosMarte
          * usaria muita memória. Já que a cada vez que a função chamasse a si mesma, uma nova lista contendo
          * todos os caminhos seria empilhada,            
          */
-        public List<List<Passo>> EncontrarCaminhos(bool recursao, bool pilha, bool dijkstra)
+        public List<List<Passo>> EncontrarCaminhos(bool recursao, bool pilha, bool dijkstra, bool distancia, bool custo, bool tempo)
         {                         
             this.caminhosEncontrados = new List<List<Passo>>();
             this.jaPassou = new bool[matrizDeAdjacencias.GetLength(0)];
 
             if (recursao) encontrarRecursivo(this.origem);
             else if (pilha) encontrarComPilha();
-            //else if (dijkstra) encontrarComDjikstra();
+            else if (dijkstra) encontrarComDijkstra(distancia, custo, tempo);
 
             if (this.caminhosEncontrados.Count() == 0)
                 throw new Exception("Nenhum caminho encontrado!");
@@ -97,7 +99,8 @@ namespace apCaminhosMarte
                         if(j == this.destino.Id)
                         {
                             pilhaCaminho.Push(this.matrizDeAdjacencias[idAtual, j]);
-                            this.caminhosEncontrados.Add(pilhaCaminho.Select(item => (Passo)item.Clone()).ToList());
+                            Stack<Passo> reversePilha = new Stack<Passo>(pilhaCaminho);                                                     
+                            this.caminhosEncontrados.Add(reversePilha.ToList());
                             pilhaCaminho.Pop();
                         }
                         else
@@ -123,6 +126,23 @@ namespace apCaminhosMarte
                     }                        
                 }
             }
+        }
+
+        private void encontrarComDijkstra(bool distancia, bool custo, bool tempo)
+        {
+            Dijkstra dijkstra = new Dijkstra(this.arvoreCidades, this.matrizDeAdjacencias, distancia, custo, tempo);
+            Stack<int> pilha = dijkstra.Caminho(this.origem.Id, this.destino.Id);
+            List<Passo> caminho = new List<Passo>();
+
+            int idOrigem = -1, idDestino = -1;
+            while (pilha.Count > 1)
+            {
+                idOrigem = pilha.Pop();
+                idDestino = pilha.Peek();             
+                caminho.Add(this.matrizDeAdjacencias[idOrigem, idDestino]);
+            }
+            caminho.Add(this.matrizDeAdjacencias[idDestino, this.destino.Id]);
+            this.caminhosEncontrados.Add(caminho);
         }
     }
 }
